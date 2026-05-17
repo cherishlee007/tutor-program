@@ -1,0 +1,195 @@
+<!-- pages/teacher-home/teacher-home.wxml - 家教端主页（我要接单表单） -->
+
+<view class="container">
+  <view class="form-header">
+    <text class="title">填写接单信息</text>
+    <text class="subtitle">完善信息后，家长将能看到您的资料</text>
+  </view>
+
+  <view class="form-content card">
+    <!-- 姓名 -->
+    <view class="form-item">
+      <text class="label">姓名 <text class="required">*</text></text>
+      <input 
+        class="input-field" 
+        placeholder="请输入您的姓名"
+        value="{{formData.name}}"
+        bindinput="onInput"
+        data-field="name"
+      />
+    </view>
+
+    <!-- 性别 -->
+    <view class="form-item">
+      <text class="label">性别 <text class="required">*</text></text>
+      <view class="radio-group">
+        <view 
+          class="radio-item {{formData.gender === '男' ? 'active' : ''}}"
+          bindtap="selectGender"
+          data-value="男"
+        >男</view>
+        <view 
+          class="radio-item {{formData.gender === '女' ? 'active' : ''}}"
+          bindtap="selectGender"
+          data-value="女"
+        >女</view>
+      </view>
+    </view>
+
+    <!-- 微信号 -->
+    <view class="form-item">
+      <text class="label">微信号 <text class="required">*</text></text>
+      <input 
+        class="input-field" 
+        placeholder="请输入微信号"
+        value="{{formData.wechat}}"
+        bindinput="onInput"
+        data-field="wechat"
+      />
+    </view>
+
+    <!-- QQ号 -->
+    <view class="form-item">
+      <text class="label">QQ号 <text class="required">*</text></text>
+      <input 
+        class="input-field" 
+        type="number"
+        placeholder="请输入QQ号"
+        value="{{formData.qq}}"
+        bindinput="onInput"
+        data-field="qq"
+      />
+    </view>
+
+    <!-- 就读院校 -->
+    <view class="form-item">
+      <text class="label">就读院校 <text class="required">*</text></text>
+      <picker 
+        mode="selector" 
+        range="{{schoolOptions}}"
+        value="{{schoolIndex}}"
+        bindchange="onSchoolChange"
+      >
+        <view class="picker-value">
+          {{schoolIndex >= 0 ? schoolOptions[schoolIndex] : '请选择院校'}}
+        </view>
+      </picker>
+    </view>
+
+    <!-- 是否有家教经验 -->
+    <view class="form-item">
+      <text class="label">是否有家教经验 <text class="required">*</text></text>
+      <view class="radio-group">
+        <view 
+          class="radio-item {{formData.hasExperience === '是' ? 'active' : ''}}"
+          bindtap="selectExperience"
+          data-value="是"
+        >是</view>
+        <view 
+          class="radio-item {{formData.hasExperience === '否' ? 'active' : ''}}"
+          bindtap="selectExperience"
+          data-value="否"
+        >否</view>
+      </view>
+    </view>
+
+
+    <!-- 教学科目（多选）- 修复选中判断 -->
+    <view class="form-item">
+      <text class="label">教学科目 <text class="required">*</text></text>
+      <view class="checkbox-group">
+        <view wx:for="{{subjectOptions}}" wx:key="index"
+              class="checkbox-item {{item.selected ? 'active' : ''}}"
+              bindtap="toggleSubject" data-index="{{index}}">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+
+    <!-- ✅ 教学年级：对象数组 + item.selected -->
+    <view class="form-item">
+      <text class="label">教学年级 <text class="required">*</text></text>
+      <view class="checkbox-group">
+        <view wx:for="{{gradeOptions}}" wx:key="index"
+              class="checkbox-item {{item.selected ? 'active' : ''}}"
+              bindtap="toggleGrade" data-index="{{index}}">
+          {{item.name}}
+        </view>
+      </view>
+    </view>
+
+
+    <!-- 方便的时间 -->
+    <view class="form-item">
+      <text class="label">方便的时间 <text class="required">*</text></text>
+      <textarea 
+        class="textarea-field" 
+        placeholder="如：周末全天，周一至周五晚上"
+        value="{{formData.availableTime}}"
+        bindinput="onInput"
+        data-field="availableTime"
+        maxlength="100"
+      />
+    </view>
+
+    <!-- 预期时薪范围 -->
+    <view class="form-item">
+      <text class="label">预期时薪范围（元/小时） <text class="required">*</text></text>
+      <view class="salary-inputs">
+        <input 
+          class="input-field salary-input" 
+          type="number"
+          placeholder="最低时薪"
+          value="{{formData.minSalary}}"
+          bindinput="onInput"
+          data-field="minSalary"
+        />
+        <text class="separator">-</text>
+        <input 
+          class="input-field salary-input" 
+          type="number"
+          placeholder="最高时薪"
+          value="{{formData.maxSalary}}"
+          bindinput="onInput"
+          data-field="maxSalary"
+        />
+      </view>
+    </view>
+
+    <!-- 概述亮点 -->
+    <view class="form-item">
+      <text class="label">概述你的亮点</text>
+      <textarea 
+        class="textarea-field" 
+        placeholder="精简描述您的优势（限200字内）"
+        value="{{formData.highlight}}"
+        bindinput="onInput"
+        data-field="highlight"
+        maxlength="200"
+      />
+      <text class="char-count">{{formData.highlight.length}}/200</text>
+    </view>
+
+    <!-- 个人简历PDF上传 -->
+    <view class="form-item">
+      <text class="label">个人简历（PDF） <text class="required">*</text></text>
+      <view class="upload-area" bindtap="uploadResume">
+        <view wx:if="{{!formData.resumePDF}}" class="upload-placeholder">
+          <image class="upload-icon" src="/images/upload.png" mode="aspectFit"></image>
+          <text>点击上传PDF简历</text>
+          <text class="upload-tip">需包含：家教经历、学生证/学信网认证、高考成绩、大学成绩单</text>
+        </view>
+        <view wx:else class="uploaded-file">
+          <image class="pdf-icon" src="/images/pdf-icon.png" mode="aspectFit"></image>
+          <text class="file-name">已上传简历</text>
+          <view class="re-upload-btn" catchtap="uploadResume">重新上传</view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 提交按钮 -->
+    <view class="submit-btn" bindtap="submitForm">
+      提交信息
+    </view>
+  </view>
+</view>
