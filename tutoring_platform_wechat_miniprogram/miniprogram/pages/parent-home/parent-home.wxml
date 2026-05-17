@@ -1,0 +1,221 @@
+<!-- pages/parent-home/parent-home.wxml - 家长端主页 -->
+<!-- 微信小程序开发注意点：
+     1. 使用 wx:for 进行列表渲染，需要指定 wx:key
+     2. 条件渲染使用 wx:if / wx:elif / wx:else
+     3. 表单输入使用 bindinput 绑定事件
+-->
+
+<view class="container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input-wrapper">
+      <image class="search-icon" src="/images/search.png" mode="aspectFit"></image>
+      <input 
+        class="search-input" 
+        placeholder="搜索家教ID、姓名、学校..." 
+        value="{{searchKeyword}}"
+        bindinput="onSearchInput"
+        bindconfirm="onSearchConfirm"
+      />
+    </view>
+    <view class="filter-btn" bindtap="showFilter">
+      <image class="filter-icon" src="/images/filter.png" mode="aspectFit"></image>
+      <text>筛选</text>
+    </view>
+  </view>
+
+  <!-- 筛选面板（默认隐藏） -->
+  <view class="filter-panel" wx:if="{{showFilterPanel}}">
+    <view class="filter-header">
+      <text class="filter-title">筛选条件</text>
+      <view class="reset-btn" bindtap="resetFilter">重置</view>
+    </view>
+    
+    <!-- 性别筛选 -->
+    <view class="filter-item">
+      <text class="filter-label">性别</text>
+      <view class="filter-options">
+        <view 
+          class="filter-option {{filterData.gender === '男' ? 'active' : ''}}"
+          bindtap="selectGender"
+          data-value="男"
+        >男</view>
+        <view 
+          class="filter-option {{filterData.gender === '女' ? 'active' : ''}}"
+          bindtap="selectGender"
+          data-value="女"
+        >女</view>
+        <view 
+          class="filter-option {{filterData.gender === '' ? 'active' : ''}}"
+          bindtap="selectGender"
+          data-value=""
+        >不限</view>
+      </view>
+    </view>
+
+    <!-- 院校筛选 -->
+    <view class="filter-item">
+      <text class="filter-label">院校</text>
+      <picker 
+        mode="multiSelector" 
+        range="{{schoolOptions}}"
+        value="{{selectedSchools}}"
+        bindchange="onSchoolChange"
+      >
+        <view class="picker-value">
+          {{selectedSchools.length > 0 ? '已选' + selectedSchools.length + '所' : '请选择院校'}}
+        </view>
+      </picker>
+    </view>
+
+    <!-- 时薪筛选 -->
+    <view class="filter-item">
+      <text class="filter-label">时薪范围</text>
+      <view class="filter-options">
+        <view 
+          class="filter-option {{filterData.salaryRange === '<100' ? 'active' : ''}}"
+          bindtap="selectSalaryRange"
+          data-value="<100"
+        >&lt;100元</view>
+        <view 
+          class="filter-option {{filterData.salaryRange === '100-200' ? 'active' : ''}}"
+          bindtap="selectSalaryRange"
+          data-value="100-200"
+        >100-200元</view>
+        <view 
+          class="filter-option {{filterData.salaryRange === '>200' ? 'active' : ''}}"
+          bindtap="selectSalaryRange"
+          data-value=">200"
+        >&gt;200元</view>
+        <view 
+          class="filter-option {{filterData.salaryRange === '' ? 'active' : ''}}"
+          bindtap="selectSalaryRange"
+          data-value=""
+        >不限</view>
+      </view>
+    </view>
+
+    <!-- 家教经验筛选 -->
+    <view class="filter-item">
+      <text class="filter-label">家教经验</text>
+      <view class="filter-options">
+        <view 
+          class="filter-option {{filterData.hasExperience === '是' ? 'active' : ''}}"
+          bindtap="selectExperience"
+          data-value="是"
+        >有经验</view>
+        <view 
+          class="filter-option {{filterData.hasExperience === '否' ? 'active' : ''}}"
+          bindtap="selectExperience"
+          data-value="否"
+        >无经验</view>
+        <view 
+          class="filter-option {{filterData.hasExperience === '' ? 'active' : ''}}"
+          bindtap="selectExperience"
+          data-value=""
+        >不限</view>
+      </view>
+    </view>
+
+    <!-- 方便时间筛选 -->
+    <view class="filter-item">
+      <text class="filter-label">方便时间</text>
+      <input 
+        class="time-input"
+        placeholder="如：周末全天"
+        value="{{filterData.availableTime}}"
+        bindinput="onTimeInput"
+      />
+    </view>
+
+    <!-- 应用筛选按钮 -->
+    <view class="apply-filter-btn" bindtap="applyFilter">
+      应用筛选
+    </view>
+  </view>
+
+  <!-- 教员列表（瀑布流两列布局） -->
+  <view class="teacher-list">
+    <view class="waterfall-container">
+      <view class="waterfall-column">
+        <block wx:for="{{leftColumnTeachers}}" wx:key="teacherId">
+          <view class="teacher-card" bindtap="goToDetail" data-teacher-id="{{item.teacherId}}">
+            <!-- 已接单标签 -->
+            <view class="status-tag" wx:if="{{item.status === '已接单'}}">已接单</view>
+            
+            <view class="card-header">
+              <view class="teacher-id">ID: {{item.teacherId}}</view>
+            </view>
+            
+            <view class="card-body">
+              <view class="info-row">
+                <text class="label">科目：</text>
+                <text class="value">{{item.subjects.join('、')}}</text>
+              </view>
+              <view class="info-row">
+                <text class="label">年级：</text>
+                <text class="value">{{item.grades.join('、')}}</text>
+              </view>
+              <view class="info-row">
+                <text class="label">时间：</text>
+                <text class="value">{{item.availableTime}}</text>
+              </view>
+              <view class="info-row">
+                <text class="label">时薪：</text>
+                <text class="value salary">{{item.minSalary}}-{{item.maxSalary}}元/小时</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+      
+      <view class="waterfall-column">
+        <block wx:for="{{rightColumnTeachers}}" wx:key="teacherId">
+          <view class="teacher-card" bindtap="goToDetail" data-teacher-id="{{item.teacherId}}">
+            <!-- 已接单标签 -->
+            <view class="status-tag" wx:if="{{item.status === '已接单'}}">已接单</view>
+            
+            <view class="card-header">
+              <view class="teacher-id">ID: {{item.teacherId}}</view>
+            </view>
+            
+            <view class="card-body">
+              <view class="info-row">
+                <text class="label">科目：</text>
+                <text class="value">{{item.subjects.join('、')}}</text>
+              </view>
+              <view class="info-row">
+                <text class="label">年级：</text>
+                <text class="value">{{item.grades.join('、')}}</text>
+              </view>
+              <view class="info-row">
+                <text class="label">时间：</text>
+                <text class="value">{{item.availableTime}}</text>
+              </view>
+              <view class="info-row">
+                <text class="label">时薪：</text>
+                <text class="value salary">{{item.minSalary}}-{{item.maxSalary}}元/小时</text>
+              </view>
+            </view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-state" wx:if="{{loading}}">
+    <text>加载中...</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{!loading && teacherList.length === 0}}">
+    <image src="/images/empty.png" mode="aspectFit"></image>
+    <text>暂无符合条件的家教</text>
+  </view>
+
+  <!-- 加载更多 -->
+  <view class="load-more" wx:if="{{hasMore && !loading}}">
+    <text bindtap="loadMore">加载更多</text>
+  </view>
+</view>

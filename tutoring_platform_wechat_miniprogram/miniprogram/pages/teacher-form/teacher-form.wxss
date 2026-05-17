@@ -1,0 +1,230 @@
+/* pages/teacher-form/teacher-form.wxss */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f9ff;
+}
+
+.form-header {
+  padding: 30rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.header-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.header-subtitle {
+  display: block;
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+.form-content {
+  flex: 1;
+  padding: 20rpx;
+}
+
+.form-item {
+  background: white;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+}
+
+.label {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 16rpx;
+  font-weight: 500;
+}
+
+.required {
+  color: #ff4d4f;
+}
+
+.input {
+  width: 100%;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  border: 1rpx solid #e9ecef;
+}
+
+.input:focus {
+  border-color: #667eea;
+  background: white;
+}
+
+.radio-group {
+  display: flex;
+  gap: 40rpx;
+}
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.radio-item radio {
+  margin-right: 10rpx;
+}
+
+.picker {
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #666;
+  border: 1rpx solid #e9ecef;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  font-size: 26rpx;
+  color: #666;
+  padding: 12rpx 20rpx;
+  background: #f8f9fa;
+  border-radius: 20rpx;
+  border: 1rpx solid #e9ecef;
+}
+
+.checkbox-item checkbox {
+  margin-right: 8rpx;
+}
+
+.textarea {
+  width: 100%;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  border: 1rpx solid #e9ecef;
+  min-height: 120rpx;
+}
+
+.highlight-textarea {
+  min-height: 160rpx;
+}
+
+.char-count {
+  display: block;
+  text-align: right;
+  font-size: 22rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.salary-inputs {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.salary-input {
+  flex: 1;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  border: 1rpx solid #e9ecef;
+  text-align: center;
+}
+
+.salary-separator {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.upload-area {
+  padding: 40rpx;
+  background: #f8f9fa;
+  border-radius: 12rpx;
+  border: 2rpx dashed #d9d9d9;
+  text-align: center;
+}
+
+.upload-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+}
+
+.upload-icon {
+  font-size: 60rpx;
+}
+
+.upload-text {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.upload-hint {
+  font-size: 22rpx;
+  color: #999;
+  line-height: 1.5;
+}
+
+.upload-success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16rpx;
+}
+
+.success-icon {
+  font-size: 32rpx;
+}
+
+.success-text {
+  font-size: 28rpx;
+  color: #52c41a;
+}
+
+.remove-btn {
+  font-size: 24rpx;
+  color: #ff4d4f;
+  padding: 8rpx 16rpx;
+  border: 1rpx solid #ff4d4f;
+  border-radius: 8rpx;
+}
+
+.submit-bar {
+  padding: 20rpx;
+  background: white;
+  box-shadow: 0 -2rpx 8rpx rgba(0, 0, 0, 0.06);
+}
+
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+}
+
+.submit-btn[disabled] {
+  background: #d9d9d9;
+  color: #999;
+}

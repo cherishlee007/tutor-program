@@ -1,0 +1,35 @@
+<!--pages/customer-service/customer-service.wxml-->
+<view class="container">
+  <view class="page-header">
+    <text class="header-title">客服咨询</text>
+    <text class="header-subtitle">长按识别二维码，添加客服一对一咨询</text>
+  </view>
+
+  <view class="content">
+    <view class="qr-section">
+      <image 
+        class="qr-image" 
+        src="/images/customer-service-qr.png" 
+        mode="aspectFit"
+        show-menu-by-longpress="{{true}}"
+      />
+      <text class="qr-hint">长按上方二维码，识别后添加客服微信</text>
+    </view>
+
+    <view class="tips-section">
+      <text class="tips-title">温馨提示</text>
+      <view class="tip-item">
+        <text class="tip-icon">✓</text>
+        <text class="tip-text">添加客服时请备注您的身份</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-icon">✓</text>
+        <text class="tip-text">客服工作时间为工作日 9:00-18:00</text>
+      </view>
+      <view class="tip-item">
+        <text class="tip-icon">✓</text>
+        <text class="tip-text">如有紧急问题，可拨打客服电话：17788264815</text>
+      </view>
+    </view>
+  </view>
+</view>

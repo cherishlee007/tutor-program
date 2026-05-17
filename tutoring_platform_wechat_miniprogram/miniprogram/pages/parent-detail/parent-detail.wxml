@@ -1,0 +1,109 @@
+<!-- pages/parent-detail/parent-detail.wxml - 家教详情页 -->
+<!-- 微信小程序开发注意点：
+     1. PDF预览使用 wx.downloadFile + wx.openDocument
+     2. 二维码长按识别使用 show-menu-by-longpress="true"
+     3. 页面参数通过 onLoad 的 options 获取
+-->
+
+<view class="container">
+  <!-- 板块一：个人信息 -->
+  <view class="section personal-info">
+    <view class="school-header">
+      <image 
+        class="school-logo" 
+        src="{{teacherInfo.schoolLogoUrl || '/images/default-school.png'}}" 
+        mode="aspectFit"
+      ></image>
+      <view class="school-info">
+        <text class="teacher-name">{{teacherInfo.name}}</text>
+        <text class="school-name">{{teacherInfo.school}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 板块二：基本信息 -->
+  <view class="section basic-info card">
+    <view class="section-title">基本信息</view>
+    
+    <view class="info-grid">
+      <view class="info-item">
+        <text class="label">家教ID</text>
+        <text class="value">{{teacherInfo.teacherId}}</text>
+      </view>
+      
+      <view class="info-item">
+        <text class="label">性别</text>
+        <text class="value">{{teacherInfo.gender}}</text>
+      </view>
+      
+      <view class="info-item">
+        <text class="label">状态</text>
+        <text class="value status {{teacherInfo.status === '已接单' ? 'taken' : 'available'}}">
+          {{teacherInfo.status}}
+        </text>
+      </view>
+      
+      <view class="info-item full-width">
+        <text class="label">教学科目</text>
+        <text class="value">{{teacherInfo.subjects.join('、')}}</text>
+      </view>
+      
+      <view class="info-item full-width">
+        <text class="label">教学年级</text>
+        <text class="value">{{teacherInfo.grades.join('、')}}</text>
+      </view>
+      
+      <view class="info-item full-width">
+        <text class="label">方便时间</text>
+        <text class="value">{{teacherInfo.availableTime}}</text>
+      </view>
+      
+      <view class="info-item full-width">
+        <text class="label">预期时薪</text>
+        <text class="value salary">{{teacherInfo.minSalary}}-{{teacherInfo.maxSalary}}元/小时</text>
+      </view>
+    </view>
+    
+    <!-- PDF简历查看 -->
+    <view class="pdf-section" wx:if="{{teacherInfo.resumePDF}}">
+      <view class="pdf-btn" bindtap="viewResume">
+        <image class="pdf-icon" src="/images/pdf-icon.png" mode="aspectFit"></image>
+        <text>查看详细简历（PDF）</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 板块三：教员亮点 -->
+  <view class="section highlights card" wx:if="{{teacherInfo.highlight}}">
+    <view class="section-title">教员亮点</view>
+    <text class="highlight-text">{{teacherInfo.highlight}}</text>
+  </view>
+
+  <!-- 底部固定按钮 -->
+  <view class="bottom-bar">
+    <view class="consult-btn" bindtap="showConsultModal">
+      点击咨询
+    </view>
+  </view>
+
+  <!-- 咨询弹窗 -->
+  <view class="modal" wx:if="{{showModal}}">
+    <view class="modal-mask" bindtap="hideConsultModal"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">联系客服</text>
+        <view class="close-btn" bindtap="hideConsultModal">×</view>
+      </view>
+      
+      <view class="modal-body">
+        <image 
+          class="qr-code" 
+          src="/images/customer-service-qr.png" 
+          mode="aspectFit"
+          show-menu-by-longpress="true"
+        ></image>
+        <text class="qr-tip">长按识别二维码，添加客服一对一咨询</text>
+      </view>
+    </view>
+  </view>
+</view>

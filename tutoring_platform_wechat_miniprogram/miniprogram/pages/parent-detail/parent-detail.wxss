@@ -1,0 +1,244 @@
+/* pages/parent-detail/parent-detail.wxss - 家教详情页样式 */
+
+.container {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding-bottom: 120rpx;
+}
+
+/* 个人信息板块 */
+.personal-info {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  padding: 40rpx;
+}
+
+.school-header {
+  display: flex;
+  align-items: center;
+}
+
+.school-logo {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: white;
+  padding: 10rpx;
+  margin-right: 30rpx;
+}
+
+.school-info {
+  flex: 1;
+}
+
+.teacher-name {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 10rpx;
+}
+
+.school-name {
+  display: block;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* 通用板块样式 */
+.section {
+  margin: 20rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+  padding-bottom: 10rpx;
+  border-bottom: 2rpx solid #eee;
+}
+
+/* 基本信息网格 */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20rpx;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.label {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.value {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.value.status {
+  padding: 4rpx 12rpx;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+  display: inline-block;
+}
+
+.value.status.available {
+  background: #e8f5e8;
+  color: #4CAF50;
+}
+
+.value.status.taken {
+  background: #ffebee;
+  color: #f44336;
+}
+
+.value.salary {
+  color: #ff6b35;
+  font-weight: 600;
+  font-size: 32rpx;
+}
+
+/* PDF简历部分 */
+.pdf-section {
+  margin-top: 30rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #eee;
+}
+
+.pdf-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx;
+  background: #f5f5f5;
+  border-radius: 12rpx;
+  color: #4CAF50;
+  font-size: 28rpx;
+}
+
+.pdf-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 12rpx;
+}
+
+/* 教员亮点 */
+.highlight-text {
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* 底部固定按钮 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 20rpx;
+  box-shadow: 0 -4rpx 12rpx rgba(0, 0, 0, 0.08);
+  z-index: 100;
+}
+
+.consult-btn {
+  background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+  color: white;
+  padding: 24rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  box-shadow: 0 4rpx 12rpx rgba(76, 175, 80, 0.3);
+}
+
+/* 弹窗样式 */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 20rpx 20rpx 0 0;
+  padding: 40rpx;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.modal-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+.close-btn {
+  font-size: 48rpx;
+  color: #999;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-body {
+  text-align: center;
+}
+
+.qr-code {
+  width: 400rpx;
+  height: 400rpx;
+  margin-bottom: 20rpx;
+  border: 2rpx solid #eee;
+  border-radius: 12rpx;
+}
+
+.qr-tip {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.5;
+}

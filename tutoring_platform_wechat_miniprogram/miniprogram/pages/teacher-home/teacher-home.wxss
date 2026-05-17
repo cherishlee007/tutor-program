@@ -1,0 +1,192 @@
+/* pages/teacher-home/teacher-home.wxss - 家教端主页样式 */
+
+.container {
+  min-height: 100vh;
+  background: #f8fafc;
+  padding-bottom: 40rpx;
+}
+
+.form-header {
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+  padding: 40rpx;
+  color: white;
+}
+
+.title {
+  display: block;
+  font-size: 40rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.subtitle {
+  display: block;
+  font-size: 26rpx;
+  opacity: 0.9;
+}
+
+.form-content {
+  margin: 20rpx;
+  padding: 30rpx;
+}
+
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.label {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 12rpx;
+  font-weight: 500;
+}
+
+.required {
+  color: #f44336;
+}
+
+.radio-group {
+  display: flex;
+  gap: 20rpx;
+}
+
+.radio-item {
+  flex: 1;
+  padding: 16rpx;
+  text-align: center;
+  background: #f5f5f5;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #666;
+  border: 2rpx solid transparent;
+}
+
+.radio-item.active {
+  background: #e3f2fd;
+  color: #2196F3;
+  border-color: #2196F3;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12rpx;
+}
+
+.checkbox-item {
+  padding: 12rpx 20rpx;
+  background: #f5f5f5;
+  border-radius: 50rpx;
+  font-size: 26rpx;
+  color: #666;
+  border: 2rpx solid transparent;
+}
+
+.checkbox-item.active {
+  background: #e3f2fd;
+  color: #2196F3;
+  border-color: #2196F3;
+}
+
+.picker-value {
+  padding: 16rpx 20rpx;
+  background: #f5f5f5;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.textarea-field {
+  width: 100%;
+  min-height: 120rpx;
+  padding: 16rpx 20rpx;
+  background: #f5f5f5;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+}
+
+.char-count {
+  display: block;
+  text-align: right;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 8rpx;
+}
+
+.salary-inputs {
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+}
+
+.salary-input {
+  flex: 1;
+}
+
+.separator {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.upload-area {
+  border: 2rpx dashed #ddd;
+  border-radius: 12rpx;
+  padding: 40rpx;
+  text-align: center;
+}
+
+/* 全部改成小程序支持的平级写法 */
+.upload-placeholder .upload-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-bottom: 16rpx;
+}
+.upload-placeholder text {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 8rpx;
+}
+.upload-placeholder .upload-tip {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.uploaded-file {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pdf-icon {
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 16rpx;
+}
+
+.file-name {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.re-upload-btn {
+  padding: 8rpx 16rpx;
+  background: #2196F3;
+  color: white;
+  border-radius: 20rpx;
+  font-size: 24rpx;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+  color: white;
+  padding: 24rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-top: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(33, 150, 243, 0.3);
+}

@@ -1,0 +1,102 @@
+/* pages/teacher-register/teacher-register.wxss - 家教端注册页样式 */
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  padding: 40rpx;
+}
+
+/* 头部区域 */
+.header {
+  text-align: center;
+  margin-bottom: 60rpx;
+  padding-top: 40rpx;
+}
+
+.logo {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10rpx;
+}
+
+.subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: #7f8c8d;
+}
+
+/* 注册表单 */
+.register-form {
+  background: white;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.08);
+}
+
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.label {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 12rpx;
+  font-weight: 500;
+}
+
+.code-input-wrapper {
+  display: flex;
+  gap: 20rpx;
+}
+
+.code-input {
+  flex: 1;
+}
+
+.send-code-btn {
+  padding: 20rpx 30rpx;
+  background: #2196F3;
+  color: white;
+  border-radius: 12rpx;
+  font-size: 26rpx;
+  white-space: nowrap;
+}
+
+.send-code-btn.disabled {
+  background: #ccc;
+}
+
+.register-btn {
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+  color: white;
+  padding: 24rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 30rpx;
+  margin-top: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(33, 150, 243, 0.3);
+}
+
+.login-link {
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.link {
+  color: #2196F3;
+  margin-left: 8rpx;
+}

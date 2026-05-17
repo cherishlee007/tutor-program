@@ -1,0 +1,114 @@
+<view class="container">
+  <!-- 星空闪烁背景层 -->
+  <view class="star-bg">
+    <block wx:for="{{stars}}" wx:key="index">
+      <view class="star" style="top: {{item.top}}%; left: {{item.left}}%; width: {{item.size}}rpx; height: {{item.size}}rpx; animation-delay: {{item.delay}}s; animation-duration: {{item.duration}}s;"></view>
+    </block>
+  </view>
+
+  <!-- 主内容区 -->
+  <view class="content">
+    <!-- Logo 和标题区域 -->
+    <view class="header">
+      <image class="logo" src="/images/logo.jpg" mode="aspectFit"></image>
+      <text class="title">智启同途</text>
+      <text class="subtitle">一对一家教 · 精准匹配 / 极速对接</text>
+    </view>
+
+    <!-- 功能入口卡片（家长端 / 家教端） -->
+    <view class="entry-buttons">
+      <view class="entry-card parent-entry" bindtap="goToParentHome" hover-class="entry-hover">
+        <view class="entry-icon">
+          <image src="/images/parent-icon.png" mode="aspectFit"></image>
+        </view>
+        <view class="entry-content">
+          <text class="entry-title">家长端入口</text>
+          <text class="entry-desc">寻找合适的家教老师 · 名校学子直达</text>
+        </view>
+        <view class="entry-arrow">›</view>
+      </view>
+
+      <view class="entry-card teacher-entry" bindtap="goToTeacherLogin" hover-class="entry-hover">
+        <view class="entry-icon">
+          <image src="/images/parent-icon.png" mode="aspectFit"></image>
+        </view>
+        <view class="entry-content">
+          <text class="entry-title">家教端入口</text>
+          <text class="entry-desc">成为家教，赚取收入 · 展示你的才华</text>
+        </view>
+        <view class="entry-arrow">›</view>
+      </view>
+    </view>
+
+    <!-- 绚丽特色网格：六大承诺/优势 -->
+    <view class="feature-grid">
+      <view class="feature-card">
+        <view class="feature-icon">🏙️</view>
+        <text class="feature-title">同城邀约</text>
+        <text class="feature-desc">深圳七校顶尖学子，极速上门</text>
+      </view>
+      <view class="feature-card">
+        <view class="feature-icon">🎓</view>
+        <text class="feature-title">名校直达</text>
+        <text class="feature-desc">深大/南科大/哈工大等学府师资</text>
+      </view>
+      <view class="feature-card">
+        <view class="feature-icon">📋</view>
+        <text class="feature-title">资质清晰</text>
+        <text class="feature-desc">学籍简历真实可查，自由筛选</text>
+      </view>
+      <view class="feature-card">
+        <view class="feature-icon">💰</view>
+        <text class="feature-title">价格公允</text>
+        <text class="feature-desc">平台推荐自行商定，无隐形收费</text>
+      </view>
+      <view class="feature-card">
+        <view class="feature-icon">🧭</view>
+        <text class="feature-title">学长引路</text>
+        <text class="feature-desc">不只讲题，更教思路与方法</text>
+      </view>
+      <view class="feature-card">
+        <view class="feature-icon">⚡</view>
+        <text class="feature-title">精准提分</text>
+        <text class="feature-desc">辅导提分30+，收获锦旗5面</text>
+      </view>
+    </view>
+
+    <!-- 荣誉资质标签墙（绚丽闪亮） -->
+    <view class="honor-section">
+      <view class="honor-tag">🥇 全国青少年信息学奥林匹克竞赛金牌</view>
+      <view class="honor-tag">🏅 全国大学生物理竞赛一等奖</view>
+      <view class="honor-tag">🔬 SCI一区顶刊论文第一作者</view>
+      <view class="honor-tag">⚙️ 三项实用新型专利持有者</view>
+      <view class="honor-tag">📚 国家级大学生创新创业训练计划</view>
+      <view class="honor-tag">📐 三年高中数学教学经验</view>
+      <view class="honor-tag">💯 高考物理98分 / 提分30+</view>
+      <view class="honor-tag">🚩 收获锦旗5面 · 家长口碑认证</view>
+    </view>
+
+    
+    <!-- 手风琴问答区域（绚丽折叠效果） -->
+    <view class="qa-section">
+      <view class="section-title">
+        <text class="title-text">❄️ 常见问题</text>
+        <text class="title-sub">您关心的一切，这里都有答案</text>
+      </view>
+      <view wx:for="{{questions}}" wx:key="index" class="qa-item">
+        <view class="qa-question" bindtap="toggleQuestion" data-index="{{index}}">
+          <text class="question-text">{{item.question}}</text>
+          <text class="qa-icon">{{item.open ? '−' : '+'}}</text>
+        </view>
+        <view class="qa-answer" wx:if="{{item.open}}">{{item.answer}}</view>
+      </view>
+    </view>
+
+    <!-- 底部信任声明 -->
+    <view class="footer">
+      <text class="footer-text">深圳七校联盟 · 学籍真实可查 · 同城极速匹配</text>
+      <text class="footer-sub">我们承诺：无隐形消费，按需匹配，快速对接</text>
+      
+    </view>
+
+    
+  </view>
+</view>

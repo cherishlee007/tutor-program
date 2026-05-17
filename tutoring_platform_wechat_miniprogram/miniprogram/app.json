@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/parent-home/parent-home",
+    "pages/parent-detail/parent-detail",
+    "pages/teacher-login/teacher-login",
+    "pages/teacher-register/teacher-register",
+    "pages/teacher-home/teacher-home",
+    "pages/teacher-form/teacher-form",
+    "pages/teacher-orders/teacher-orders",
+    "pages/customer-service/customer-service"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#667eea",
+    "navigationBarTitleText": "家教中介平台",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f9ff"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#667eea",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/teacher-home/teacher-home",
+        "text": "我要接单",
+        "iconPath": "images/tab-form.png",
+        "selectedIconPath": "images/tab-form-active.png"
+      },
+      {
+        "pagePath": "pages/customer-service/customer-service",
+        "text": "客服",
+        "iconPath": "images/tab-form.png",
+        "selectedIconPath": "images/tab-form-active.png"
+      },
+      {
+        "pagePath": "pages/teacher-orders/teacher-orders",
+        "text": "我的",
+        "iconPath": "images/tab-orders.png",
+        "selectedIconPath": "images/tab-orders-active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

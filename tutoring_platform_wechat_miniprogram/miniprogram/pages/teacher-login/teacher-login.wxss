@@ -1,0 +1,133 @@
+/* pages/teacher-login/teacher-login.wxss - 家教端登录页样式 */
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  padding: 40rpx;
+}
+
+/* 头部区域 */
+.header {
+  text-align: center;
+  margin-bottom: 60rpx;
+  padding-top: 40rpx;
+}
+
+.logo {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  margin-bottom: 20rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #2c3e50;
+  margin-bottom: 10rpx;
+}
+
+.subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: #7f8c8d;
+}
+
+/* 登录表单 */
+.login-form {
+  background: white;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.08);
+}
+
+.form-item {
+  margin-bottom: 30rpx;
+}
+
+.label {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 12rpx;
+  font-weight: 500;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-bottom: 30rpx;
+}
+
+.forgot-password text {
+  font-size: 26rpx;
+  color: #2196F3;
+}
+
+.login-btn {
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+  color: white;
+  padding: 24rpx;
+  border-radius: 50rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(33, 150, 243, 0.3);
+}
+
+.divider {
+  text-align: center;
+  margin: 30rpx 0;
+  position: relative;
+}
+
+.divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1rpx;
+  background: #eee;
+}
+
+.divider text {
+  background: white;
+  padding: 0 20rpx;
+  color: #999;
+  font-size: 26rpx;
+  position: relative;
+}
+
+.wechat-login-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #07c160;
+  color: white;
+  padding: 24rpx;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(7, 193, 96, 0.3);
+}
+
+.wechat-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 12rpx;
+}
+
+.register-link {
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+}
+
+.link {
+  color: #2196F3;
+  margin-left: 8rpx;
+}

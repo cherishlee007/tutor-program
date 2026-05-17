@@ -1,0 +1,87 @@
+/* pages/customer-service/customer-service.wxss */
+.container {
+  min-height: 100vh;
+  background-color: #f5f9ff;
+}
+
+.page-header {
+  padding: 30rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.header-title {
+  display: block;
+  font-size: 36rpx;
+  font-weight: bold;
+  margin-bottom: 10rpx;
+}
+
+.header-subtitle {
+  display: block;
+  font-size: 24rpx;
+  opacity: 0.9;
+}
+
+.content {
+  padding: 40rpx;
+}
+
+.qr-section {
+  background: white;
+  border-radius: 16rpx;
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+  margin-bottom: 30rpx;
+}
+
+.qr-image {
+  width: 500rpx;
+  height: 500rpx;
+  margin-bottom: 20rpx;
+}
+
+.qr-hint {
+  font-size: 26rpx;
+  color: #666;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.tips-section {
+  background: white;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+}
+
+.tips-title {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.tip-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 16rpx;
+}
+
+.tip-icon {
+  color: #52c41a;
+  font-size: 28rpx;
+  margin-right: 12rpx;
+  font-weight: bold;
+}
+
+.tip-text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+  flex: 1;
+}

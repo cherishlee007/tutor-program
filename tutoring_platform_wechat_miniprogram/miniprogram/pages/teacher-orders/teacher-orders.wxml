@@ -1,0 +1,91 @@
+<!--pages/teacher-orders/teacher-orders.wxml-->
+<view class="container">
+  <view class="page-header">
+    <text class="header-title">我的接单记录</text>
+    <text class="header-subtitle">管理您的家教接单信息</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:if="{{orders.length === 0}}" class="empty-state">
+    <text class="empty-icon">📋</text>
+    <text class="empty-text">暂无接单记录</text>
+    <text class="empty-hint">点击"我要接单"填写信息</text>
+  </view>
+
+  <!-- 订单列表 -->
+  <scroll-view wx:else scroll-y class="orders-list">
+    <view wx:for="{{orders}}" wx:key="_id" class="order-card">
+      <!-- 订单头部 -->
+      <view class="order-header">
+        <view class="order-id-info">
+          <text class="order-label">家教ID：</text>
+          <text class="order-id">{{item.teacherId}}</text>
+        </view>
+        <view class="status-badge {{item.status === '已接单' ? 'status-taken' : 'status-available'}}">
+          {{item.status}}
+        </view>
+      </view>
+
+      <!-- 订单基本信息 -->
+      <view class="order-body">
+        <view class="info-row">
+          <text class="info-label">姓名：</text>
+          <text class="info-value">{{item.name}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">院校：</text>
+          <text class="info-value">{{item.school}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">科目：</text>
+          <text class="info-value">{{item.subjects.join('、')}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">时薪：</text>
+          <text class="info-value salary">{{item.minSalary}}-{{item.maxSalary}}元/小时</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">提交时间：</text>
+          <text class="info-value time">{{item.createTimeStr}}</text>
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="order-actions">
+        <button 
+          wx:if="{{item.status === '接单中'}}" 
+          class="action-btn pause-btn" 
+          bindtap="pauseOrder" 
+          data-id="{{item.teacherId}}"
+        >
+          暂停接单
+        </button>
+        <button 
+          class="action-btn consult-btn" 
+          bindtap="showConsultQR"
+        >
+          报单后的流程
+        </button>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<!-- 客服咨询二维码弹窗 -->
+<view wx:if="{{showQRModal}}" class="modal-overlay" bindtap="closeQRModal">
+  <view class="modal-content" catchtap="stopPropagation">
+    <view class="modal-header">
+      <text class="modal-title">客服咨询</text>
+      <text class="modal-close" bindtap="closeQRModal">×</text>
+    </view>
+    <view class="modal-body">
+      <image 
+        class="qr-image" 
+        src="/images/customer-service-qr.png" 
+        mode="aspectFit"
+        show-menu-by-longpress="{{true}}"
+      />
+      <text class="qr-hint">长按识别二维码，咨询报单后续流程</text>
+    </view>
+  </view>
+</view>
